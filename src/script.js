@@ -11,6 +11,8 @@ const TOOLTIP_COMPONENT_1_ELT = $('tooltip-component-1');
 const TOOLTIP_COMPONENT_2_ELT = $('tooltip-component-2');
 const TOOLTIP_DESCRIPTION_ELT = $('tooltip-description');
 
+const MAX_SELECTED_ITEM_COUNT = 10;
+
 let SELECTED_ITEMS = [];
 let POSSIBLE_COMBINATIONS = [];
 let POSSIBLE_ITEMS = [];
@@ -25,8 +27,12 @@ function main() {
 }
 
 function addItemToSelection(item) {
-    SELECTED_ITEMS.push(item);
-    refresh();
+    if (SELECTED_ITEMS.length === MAX_SELECTED_ITEM_COUNT) {
+        alert(`Cannot select more than ${MAX_SELECTED_ITEM_COUNT} components (too much combinations).`);
+    } else {
+        SELECTED_ITEMS.push(item);
+        refresh();
+    }
 }
 
 function removeItemFromSelection(item) {
