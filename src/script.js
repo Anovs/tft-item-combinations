@@ -164,6 +164,7 @@ function createItemImage(item, onclick) {
     const image = document.createElement('img');
     image.src = `img/${item}.png`;
     image.title = data.name;
+    image.classList.add('item');
 
     if (onclick) {
         image.onclick = onclick;

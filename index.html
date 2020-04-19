@@ -9,31 +9,43 @@
                 font-family: Arial, Helvetica, sans-serif;
             }
 
-            img {
+            .item {
                 margin: 5px;
                 width: 32px;
                 height: 32px;
                 border: 2px solid white;
-            }
-
-            p {
-                height: 40px;
+                vertical-align: middle;
             }
 
             .middle {
-                line-height: 40px;
                 vertical-align: middle;
+            }
+
+            .adjust {
+                display: inline-block;
+                height: 36px;
             }
         </style>
     </head>
     <body>
         <h2 style="text-align: center;">TFT item combinations</h2>
         <br>
-        <p><span class="middle">Components (click to add):</span><span id="components" class="middle"></span></p>
+        <p>
+            <span class="adjust">Components (click to add):</span>
+            <img src="img/dummy.png">
+            <span id="components" class="middle"></span>
+        </p>
         <br>
-        <p><span class="middle">Selected (click to remove):</span><span id="selected-items" class="middle"></span></p>
+        <p>
+            <span class="adjust">Selected (click to remove):</span>
+            <img src="img/dummy.png">
+            <span id="selected-items" class="middle"></span></p>
         <br>
-        <p><span class="middle">Filters (click to toggle):</span><span id="filters" class="middle"></span></p>
+        <p>
+            <span class="adjust">Filters (click to toggle):</span>
+            <img src="img/dummy.png">
+            <span id="filters" class="middle"></span>
+        </p>
         <br>
         <p>Possible combinations (<span id="combination-number">0</span>):</p>
         <ul id="combinations"></ul>
