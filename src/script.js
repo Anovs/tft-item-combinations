@@ -3,6 +3,7 @@ const SELECTECD_ITEMS_ELT = $('selected-items');
 const COMBINATIONS_ELT = $('combinations');
 const FILTERS_ELT = $('filters');
 const COMBINATION_NUMBER_ELT = $('combination-number');
+const RESET_BUTTON_ELT = $('reset-button');
 const TOOLTIP_ELT = $('tooltip');
 const TOOLTIP_ITEM_NAME_ELT = $('tooltip-item-name');
 const TOOLTIP_RECIPE_ELT = $('tooltip-recipe');
@@ -19,6 +20,11 @@ let POSSIBLE_ITEMS = [];
 let FILTERS = [];
 
 function main() {
+    RESET_BUTTON_ELT.onclick = () => {
+        SELECTED_ITEMS = [];
+        refresh();
+    };
+
     for (const item of BASE_ITEMS) {
         COMPONENTS_ELT.appendChild(createItemImage(item.id, () => {
             addItemToSelection(item.id);

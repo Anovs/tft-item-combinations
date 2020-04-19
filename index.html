@@ -53,10 +53,15 @@
                 font-size: 16px;
                 margin: 15px 5px 1px 5px;
             }
+
+            #reset-button {
+                font-size: medium;
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
-        <h2 style="text-align: center;">TFT item combinations</h2>
+        <h2 style="text-align: center;">TFT item combinations <span id="reset-button">[reset]</span></h2>
         <br>
         <div id="tooltip">
             <p id="tooltip-title"><img id="tooltip-item-image" style="position: relative; top: -2px;"> <span id="tooltip-item-name"></span><span id="tooltip-recipe"> ( <img id="tooltip-component-1"> + <img id="tooltip-component-2"> )</span></p>
