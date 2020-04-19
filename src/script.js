@@ -176,13 +176,24 @@ function isBasicItem(item) {
     return !ITEMS[item].recipe;
 }
 
-function sortItems(item1, item2) {
-    if (isBasicItem(item1) === isBasicItem(item2)) {
-        return item1 < item2 ? -1 : 1;
-    } else if (isBasicItem(item1)) {
-        return 1;
+function getItemWeight(item) {
+    if (isBasicItem(item)) {
+        return 2;
+    } else if (FILTERS.includes(item)) {
+        return 0;
     } else {
-        return -1;
+        return 1;
+    }
+}
+
+function sortItems(item1, item2) {
+    const w1 = getItemWeight(item1);
+    const w2 = getItemWeight(item2);
+
+    if (w1 !== w2) {
+        return w1 - w2;
+    } else {
+        return item1 < item2 ? -1 : 1;
     }
 }
 
