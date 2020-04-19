@@ -3,6 +3,13 @@ const SELECTECD_ITEMS_ELT = $('selected-items');
 const COMBINATIONS_ELT = $('combinations');
 const FILTERS_ELT = $('filters');
 const COMBINATION_NUMBER_ELT = $('combination-number');
+const TOOLTIP_ELT = $('tooltip');
+const TOOLTIP_ITEM_NAME_ELT = $('tooltip-item-name');
+const TOOLTIP_RECIPE_ELT = $('tooltip-recipe');
+const TOOLTIP_ITEM_IMAGE_ELT = $('tooltip-item-image');
+const TOOLTIP_COMPONENT_1_ELT = $('tooltip-component-1');
+const TOOLTIP_COMPONENT_2_ELT = $('tooltip-component-2');
+const TOOLTIP_DESCRIPTION_ELT = $('tooltip-description');
 
 let SELECTED_ITEMS = [];
 let POSSIBLE_COMBINATIONS = [];
@@ -37,6 +44,26 @@ function toggleFilter(item) {
     }
 
     refresh();
+}
+
+function setTooltipItem(item) {
+    const data = ITEMS[item];
+
+    TOOLTIP_ITEM_IMAGE_ELT.src = getItemImageUrl(data.id);
+    TOOLTIP_ITEM_NAME_ELT.textContent = data.name;
+    TOOLTIP_DESCRIPTION_ELT.textContent = data.description;
+
+    if (data.recipe) {
+        TOOLTIP_COMPONENT_1_ELT.src = getItemImageUrl(data.recipe[0]);
+        TOOLTIP_COMPONENT_2_ELT.src = getItemImageUrl(data.recipe[1]);
+        TOOLTIP_RECIPE_ELT.style.display = 'inline';
+    } else {
+        TOOLTIP_RECIPE_ELT.style.display = 'none';
+    }
+}
+
+function getItemImageUrl(item) {
+    return `img/${item}.png`;
 }
 
 function refresh() {
@@ -163,12 +190,26 @@ function createItemImage(item, onclick) {
     const data = ITEMS[item];
     const image = document.createElement('img');
     image.src = `img/${item}.png`;
-    image.title = data.name;
+    // image.title = data.name;
     image.classList.add('item');
 
     if (onclick) {
         image.onclick = onclick;
         image.style.cursor = 'pointer';
+    }
+
+    if (data.recipe) {
+        image.onmouseenter = () => {
+            const rect = image.getBoundingClientRect();
+            setTooltipItem(item);
+            TOOLTIP_ELT.style.left = `${rect.left}px`;
+            TOOLTIP_ELT.style.top = `${rect.bottom}px`;
+            TOOLTIP_ELT.style.display = 'block';
+        };
+
+        image.onmouseleave = () => {
+            TOOLTIP_ELT.style.display = 'none';
+        };
     }
 
     return image;

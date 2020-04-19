@@ -25,11 +25,43 @@
                 display: inline-block;
                 height: 36px;
             }
+
+            #tooltip {
+                max-width: 400px;
+                padding: 5px;
+                font-size: 24px;
+                background-color: #333333;
+                color: #eeeeee;
+                border-radius: 3px;
+                position: fixed;
+                display: none;
+            }
+
+            #tooltip-title {
+                margin: 3px;
+                text-align: center;
+            }
+
+            #tooltip img {
+                width: 24px;
+                height: 24px;
+                vertical-align: bottom;
+                line-height: 1.2;
+            }
+
+            #tooltip-description {
+                font-size: 16px;
+                margin: 15px 5px 1px 5px;
+            }
         </style>
     </head>
     <body>
         <h2 style="text-align: center;">TFT item combinations</h2>
         <br>
+        <div id="tooltip">
+            <p id="tooltip-title"><img id="tooltip-item-image" style="position: relative; top: -2px;"> <span id="tooltip-item-name"></span><span id="tooltip-recipe"> ( <img id="tooltip-component-1"> + <img id="tooltip-component-2"> )</span></p>
+            <p id="tooltip-description"></p>
+        </div>
         <p>
             <span class="adjust">Components (click to add):</span>
             <img src="img/dummy.png">
