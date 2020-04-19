@@ -1,39 +1,43 @@
-<title>TFT item combinations</title>
-<head>
-    <style>
-        body {
-            font-size: large;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>TFT item combinations</title>
+        <style>
+            body {
+                font-size: large;
+                font-family: Arial, Helvetica, sans-serif;
+            }
 
-        img {
-            margin: 5px;
-            width: 32px;
-            height: 32px;
-            border: 2px solid white;
-        }
+            img {
+                margin: 5px;
+                width: 32px;
+                height: 32px;
+                border: 2px solid white;
+            }
 
-        p {
-            height: 40px;
-        }
+            p {
+                height: 40px;
+            }
 
-        .middle {
-            line-height: 40px;
-            vertical-align: middle;
-        }
-    </style>
-</head>
-<body>
-    <h2 style="text-align: center;">TFT item combinations</h2>
-    <br>
-    <p><span class="middle">Components (click to add):</span><span id="components" class="middle"></span></p>
-    <br>
-    <p><span class="middle">Selected (click to remove):</span><span id="selected-items" class="middle"></span></p>
-    <br>
-    <p><span class="middle">Filters (click to toggle):</span><span id="filters" class="middle"></span></p>
-    <br>
-    <p>Possible combinations (<span id="combination-number">0</span>):</p>
-    <ul id="combinations"></ul>
-</body>
-<script src="src/data.js"></script>
-<script src="src/script.js"></script>
+            .middle {
+                line-height: 40px;
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 style="text-align: center;">TFT item combinations</h2>
+        <br>
+        <p><span class="middle">Components (click to add):</span><span id="components" class="middle"></span></p>
+        <br>
+        <p><span class="middle">Selected (click to remove):</span><span id="selected-items" class="middle"></span></p>
+        <br>
+        <p><span class="middle">Filters (click to toggle):</span><span id="filters" class="middle"></span></p>
+        <br>
+        <p>Possible combinations (<span id="combination-number">0</span>):</p>
+        <ul id="combinations"></ul>
+    </body>
+    <script src="src/data.js"></script>
+    <script src="src/script.js"></script>
+</html>

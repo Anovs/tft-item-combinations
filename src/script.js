@@ -11,8 +11,8 @@ let FILTERS = [];
 
 function main() {
     for (const item of BASE_ITEMS) {
-        COMPONENTS_ELT.appendChild(createItemImage(item, () => {
-            addItemToSelection(item);
+        COMPONENTS_ELT.appendChild(createItemImage(item.id, () => {
+            addItemToSelection(item.id);
         }));
     }
 }
@@ -46,7 +46,9 @@ function refresh() {
     emptyDomElement(COMBINATIONS_ELT);
     emptyDomElement(FILTERS_ELT);
 
-    const craftableItems = RECIPES.filter(r => {
+    const craftableItems = COMBINED_ITEMS.filter(data => {
+        const r = data.recipe;
+
         if (r[0] === r[1]) {
             const index1 = SELECTED_ITEMS.indexOf(r[0]);
 
@@ -54,7 +56,7 @@ function refresh() {
         } else {
             return SELECTED_ITEMS.includes(r[0]) && SELECTED_ITEMS.includes(r[1]);
         }
-    }).map(r => r[2]);
+    }).map(data => data.id);
 
     FILTERS = FILTERS.filter(item => craftableItems.includes(item));
 
@@ -123,10 +125,10 @@ function getCombinedItem(item1, item2) {
     let item = CACHE[key];
 
     if (!item) {
-        item = RECIPES.find(([component1, component2]) => {
-            return (component1 === item1 && component2 === item2)
-                || (component2 === item1 && component1 === item2);
-        })[2];
+        item = COMBINED_ITEMS.find(({recipe}) => {
+            return (recipe[0] === item1 && recipe[1] === item2)
+                || (recipe[1] === item1 && recipe[0] === item2);
+        }).id;
         CACHE[key] = item;
     }
 
@@ -144,7 +146,7 @@ function $(id) {
 }
 
 function isBasicItem(item) {
-    return BASE_ITEMS.includes(item);
+    return !ITEMS[item].recipe;
 }
 
 function sortItems(item1, item2) {
@@ -158,9 +160,10 @@ function sortItems(item1, item2) {
 }
 
 function createItemImage(item, onclick) {
+    const data = ITEMS[item];
     const image = document.createElement('img');
     image.src = `img/${item}.png`;
-    image.title = itemIdToName(item);
+    image.title = data.name;
 
     if (onclick) {
         image.onclick = onclick;
