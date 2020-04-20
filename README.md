@@ -1,1 +1,1 @@
-[Link to tool here.](https://anovs.github.io/tft-item-combinations/)
+[Link to the tool here.](https://anovs.github.io/tft-item-combinations/)
