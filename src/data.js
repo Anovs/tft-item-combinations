@@ -2,47 +2,47 @@ const ITEMS = {
     "bf-sword": {
         "id": "bf-sword",
         "name": "B.F. Sword",
-        "description": ""
+        "description": "+15 damages."
     },
     "chain-vest": {
         "id": "chain-vest",
         "name": "Chain Vest",
-        "description": ""
+        "description": "+25 armor."
     },
     "giants-belt": {
         "id": "giants-belt",
         "name": "Giant's Belt",
-        "description": ""
+        "description": "+200 health."
     },
     "needlessly-large-rod": {
         "id": "needlessly-large-rod",
         "name": "Needlessly Large Rod",
-        "description": ""
+        "description": "+20 spell power."
     },
     "negatron-cloak": {
         "id": "negatron-cloak",
         "name": "Negatron Cloak",
-        "description": ""
+        "description": "+25 magic resistance."
     },
     "recurve-bow": {
         "id": "recurve-bow",
         "name": "Recurve Bow",
-        "description": ""
+        "description": "+20% attack speed."
     },
     "sparring-gloves": {
         "id": "sparring-gloves",
         "name": "Sparring Gloves",
-        "description": ""
+        "description": "+10% critical strike chance and dodge chance."
     },
     "spatula": {
         "id": "spatula",
         "name": "Spatula",
-        "description": ""
+        "description": "It must do something..."
     },
     "tear-of-the-godess": {
         "id": "tear-of-the-godess",
         "name": "Tear of the Godess",
-        "description": ""
+        "description": "+15 mana."
     },
     "deathblade": {
         "id": "deathblade",
