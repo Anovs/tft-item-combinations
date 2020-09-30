@@ -26,7 +26,7 @@ function main() {
     };
 
     for (const item of BASE_ITEMS) {
-        COMPONENTS_ELT.appendChild(createItemImage(item.id, () => {
+        COMPONENTS_ELT.appendChild(createItemImage(item.id, false, () => {
             addItemToSelection(item.id);
         }));
     }
@@ -59,7 +59,7 @@ function toggleFilter(item) {
 }
 
 function setTooltipItem(item) {
-    const data = ITEMS[item];
+    const data = ITEMS_BY_ID[item];
 
     TOOLTIP_ITEM_IMAGE_ELT.src = getItemImageUrl(data.id);
     TOOLTIP_ITEM_NAME_ELT.textContent = data.name;
@@ -75,7 +75,7 @@ function setTooltipItem(item) {
 }
 
 function getItemImageUrl(item) {
-    return `img/${item}.png`;
+    return `img/${item.padStart(2, '0')}.png`;
 }
 
 function refresh() {
@@ -100,7 +100,7 @@ function refresh() {
     FILTERS = FILTERS.filter(item => craftableItems.includes(item));
 
     for (const item of craftableItems) {
-        const image = createItemImage(item, () => {
+        const image = createItemImage(item, false, () => {
             toggleFilter(item);
         });
 
@@ -112,7 +112,7 @@ function refresh() {
     }
 
     for (const item of SELECTED_ITEMS) {
-        SELECTECD_ITEMS_ELT.appendChild(createItemImage(item, () => {
+        SELECTECD_ITEMS_ELT.appendChild(createItemImage(item, false, () => {
             removeItemFromSelection(item);
         }));
     }
@@ -142,7 +142,7 @@ function refresh() {
         const li = document.createElement('li');
 
         for (const item of list) {
-            li.appendChild(createItemImage(item));
+            li.appendChild(createItemImage(item, true));
         }
 
         COMBINATIONS_ELT.appendChild(li);
@@ -185,7 +185,7 @@ function $(id) {
 }
 
 function isBasicItem(item) {
-    return !ITEMS[item].recipe;
+    return !ITEMS_BY_ID[item].recipe;
 }
 
 function getItemWeight(item) {
@@ -209,10 +209,9 @@ function sortItems(item1, item2) {
     }
 }
 
-function createItemImage(item, onclick) {
-    const data = ITEMS[item];
+function createItemImage(item, showTooltipOnHover, onclick) {
     const image = document.createElement('img');
-    image.src = `img/${item}.png`;
+    image.src = getItemImageUrl(item);
     // image.title = data.name;
     image.classList.add('item');
 
@@ -221,7 +220,7 @@ function createItemImage(item, onclick) {
         image.style.cursor = 'pointer';
     }
 
-    if (data.recipe) {
+    if (showTooltipOnHover) {
         image.onmouseenter = () => {
             const rect = image.getBoundingClientRect();
             setTooltipItem(item);
