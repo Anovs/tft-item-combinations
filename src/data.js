@@ -1,3 +1,5 @@
+// Data fetched from https://static.developer.riotgames.com/docs/tft/set4.zip
+
 const ITEMS = [
   {
     "id": 1,
